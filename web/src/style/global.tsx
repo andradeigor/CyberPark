@@ -5,5 +5,4 @@ export default createGlobalStyle`*{
     outline:0;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
-    background-color: ${({ theme }) => theme.colors.background};
 }`;

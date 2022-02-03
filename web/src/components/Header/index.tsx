@@ -1,5 +1,34 @@
+import {
+  HeaderContainer,
+  HeaderTitleContainer,
+  HeaderTitleImage,
+  HeaderTitle,
+  HeaderMenu,
+  HeaderUl,
+  HeaderIl,
+} from "./styled";
+import CogPath from "../../assets/cog.svg";
 const Header: React.FC = () => {
-  return <h1>Hello World</h1>;
+  return (
+    <HeaderContainer>
+      <HeaderTitleContainer>
+        <HeaderTitleImage src={CogPath} />
+        <HeaderTitle>
+          Cyber
+          <br />
+          Park
+        </HeaderTitle>
+      </HeaderTitleContainer>
+      <HeaderMenu>
+        <HeaderUl>
+          <HeaderIl>Home</HeaderIl>
+          <HeaderIl>Parque</HeaderIl>
+          <HeaderIl>Atrações</HeaderIl>
+          <HeaderIl>Contato</HeaderIl>
+        </HeaderUl>
+      </HeaderMenu>
+    </HeaderContainer>
+  );
 };
 
 export default Header;
