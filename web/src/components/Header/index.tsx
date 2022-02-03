@@ -24,6 +24,8 @@ const Header: React.FC = () => {
           <HeaderIl>Home</HeaderIl>
           <HeaderIl>Parque</HeaderIl>
           <HeaderIl>Atrações</HeaderIl>
+          <HeaderIl>Eventos</HeaderIl>
+          <HeaderIl>Calendário</HeaderIl>
           <HeaderIl>Contato</HeaderIl>
         </HeaderUl>
       </HeaderMenu>

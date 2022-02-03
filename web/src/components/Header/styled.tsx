@@ -19,9 +19,10 @@ export const HeaderTitleImage = styled.img`
 
 export const HeaderTitle = styled.h1`
   color: ${({ theme }) => theme.colors.background};
-  font-weight: 800;
+  font-weight: 900;
   font-size: 48px;
   line-height: 80%;
+  margin-top: 10px;
 `;
 
 export const HeaderMenu = styled.nav`
