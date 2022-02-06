@@ -8,7 +8,7 @@ export const light: DefaultTheme = {
     subButton: "#838383",
     button: "#007074",
     backgroundInput: "#EFF0F2",
-    background: "#FAFAFA",
+    background: "#FFFFFF",
   },
   breakpoints: {
     sm: "650px",
