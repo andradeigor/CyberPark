@@ -8,13 +8,13 @@ import "bear-carousel/dist/index.css";
 const images = [
   {
     id: 1,
-    image: "https://images8.alphacoders.com/105/thumb-1920-1054256.jpg",
+    image: "https://images.alphacoders.com/914/thumb-1920-914670.jpg",
   },
   {
     id: 2,
-    image: "https://images8.alphacoders.com/105/thumb-1920-1054256.jpg",
+    image: "https://images4.alphacoders.com/884/thumb-1920-884373.png",
   },
-  { id: 3, image: "https://images.alphacoders.com/914/thumb-1920-914670.jpg" },
+  { id: 3, image: "https://images2.alphacoders.com/199/thumb-1920-199830.jpg" },
 ];
 
 const bearSlideItemData: TBearSlideItemDataList = images.map((row) => {
@@ -32,6 +32,7 @@ const Carousel = () => {
       isEnableLoop={true}
       isEnableAutoPlay={true}
       isEnablePagination={true}
+      isEnableNavButton={true}
     />
   );
 };
