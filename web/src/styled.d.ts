@@ -11,6 +11,11 @@ declare module "styled-components" {
       button: string;
       backgroundInput: string;
       background: string;
+      strongPurple: string;
+      weakPurple: string;
+      weakBlue: string;
+      strongBlue: string;
+      darkBlue: string;
     };
     breakpoints: {
       sm: string;

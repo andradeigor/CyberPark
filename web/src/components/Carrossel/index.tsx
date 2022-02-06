@@ -31,6 +31,7 @@ const Carousel = () => {
       aspectRatio={{ widthRatio: 16, heightRatio: 9 }}
       isEnableLoop={true}
       isEnableAutoPlay={true}
+      isEnableMouseMove={false}
       isEnablePagination={true}
       isEnableNavButton={true}
     />

@@ -9,9 +9,8 @@ export default createGlobalStyle`*{
 }
 body{
     overflow-y: scroll;
-    background-color: ${(props) => props.theme.colors.background};
     &::-webkit-scrollbar {
-        width: 10px;
+        width: 5px;
     }
     &::-webkit-scrollbar-thumb {
         background: ${(props) => props.theme.colors.secondary};
