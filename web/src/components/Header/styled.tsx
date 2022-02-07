@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  background-color: rgba(9, 25, 51, 0.75);
+  background-color: rgba(0, 0, 0, 0.75);
   position: absolute;
   z-index: 10;
   top: 0;
@@ -9,7 +9,6 @@ export const HeaderContainer = styled.header`
   width: 100%;
   height: 200px;
   display: flex;
-  padding-top: 20px;
   align-items: center;
   flex-direction: column;
 `;
@@ -17,8 +16,8 @@ export const HeaderTitleContainer = styled.div`
   display: flex;
 `;
 export const HeaderTitleImage = styled.img`
-  width: 90px;
-  height: 90px;
+  width: 250px;
+  height: 140px;
 `;
 
 export const HeaderTitle = styled.h1`
@@ -30,7 +29,6 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const HeaderMenu = styled.nav`
-  padding-top: 20px;
   width: 100%;
   height: 100%;
 `;

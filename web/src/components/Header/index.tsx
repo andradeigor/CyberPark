@@ -7,17 +7,12 @@ import {
   HeaderUl,
   HeaderIl,
 } from "./styled";
-import CogPath from "../../assets/cog.svg";
+import LogoPath from "../../assets/logo.png";
 const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <HeaderTitleContainer>
-        <HeaderTitleImage src={CogPath} />
-        <HeaderTitle>
-          Cyber
-          <br />
-          Park
-        </HeaderTitle>
+        <HeaderTitleImage src={LogoPath} />
       </HeaderTitleContainer>
       <HeaderMenu>
         <HeaderUl>
