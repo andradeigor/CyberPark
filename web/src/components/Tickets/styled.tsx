@@ -31,6 +31,7 @@ export const CardsWarper = styled.section`
   display: flex;
   gap: 60px;
   right: 50%;
+  height: 600px;
 `;
 
 export const CardTitleContainer = styled.div`

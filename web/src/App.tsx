@@ -1,18 +1,15 @@
 import React from "react";
-import GlobalTheme from "./style/global";
-import { ThemeProvider } from "styled-components";
-import { light } from "./style/theme/light";
-import Header from "./components/Header/index";
-import Carousel from "./components/Carrossel/index";
-import Ticket from "./components/Tickets";
+import Buy from "./Pages/Buy";
+import Home from "./Pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={light}>
-      <GlobalTheme />
-      <Header />
-      <Carousel />
-      <Ticket />
-    </ThemeProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/buy" element={<Buy />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
