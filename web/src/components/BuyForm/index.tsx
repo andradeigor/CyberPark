@@ -40,7 +40,7 @@ type Inputs = {
   neighborhood: string;
   street: string;
   number: string;
-  complement: string;
+  email: string;
 };
 const BuyForm = () => {
   const {
@@ -63,7 +63,10 @@ const BuyForm = () => {
       SetConter(parseInt(params.normal));
     }
   }, []);
-  const onSubmit: SubmitHandler<Inputs> = (data) => alert(JSON.stringify(data));
+  const onSubmit: SubmitHandler<Inputs> = async (requestData) => {
+    const data = { ...requestData, halfTickets: halfConter, Tickets: Conter };
+    await axios.post("http://localhost:3333/buy/", data);
+  };
   const HanddleCounter = (operation: number) => {
     if (operation == -1 && Conter == 0) {
       return;
@@ -78,7 +81,6 @@ const BuyForm = () => {
   };
   function onBlurcep() {
     const value = getValues("cep");
-    console.log(value);
     const cep = value?.replace(/[^0-9]/g, "");
     if (cep?.length !== 8) {
       return;
@@ -107,6 +109,10 @@ const BuyForm = () => {
                 <BuyFormInput {...register("name", { required: true })} />
               </BuyFormInputContainer>
               <BuyFormInputContainer>
+                <BuyFormInputTitle>Email:</BuyFormInputTitle>
+                <BuyFormInput {...register("email", { required: true })} />
+              </BuyFormInputContainer>
+              <BuyFormInputContainer>
                 <BuyFormInputTitle>Cep:</BuyFormInputTitle>
                 <BuyFormInput
                   {...register("cep", {
@@ -118,7 +124,8 @@ const BuyForm = () => {
               <BuyFormInputContainer>
                 <BuyFormInputTitle>Estado:</BuyFormInputTitle>
                 <BuyFormInput
-                  {...register("uf", { required: true, disabled: controlCep })}
+                  {...register("uf", { required: true })}
+                  disabled={controlCep}
                 />
               </BuyFormInputContainer>
               <BuyFormInputContainer>
@@ -126,8 +133,8 @@ const BuyForm = () => {
                 <BuyFormInput
                   {...register("city", {
                     required: true,
-                    disabled: controlCep,
                   })}
+                  disabled={controlCep}
                 />
               </BuyFormInputContainer>
               <BuyFormInputContainer>
@@ -135,8 +142,8 @@ const BuyForm = () => {
                 <BuyFormInput
                   {...register("neighborhood", {
                     required: true,
-                    disabled: controlCep,
                   })}
+                  disabled={controlCep}
                 />
               </BuyFormInputContainer>
               <BuyFormInputContainer>
@@ -144,18 +151,15 @@ const BuyForm = () => {
                 <BuyFormInput
                   {...register("street", {
                     required: true,
-                    disabled: controlCep,
                   })}
+                  disabled={controlCep}
                 />
               </BuyFormInputContainer>
               <BuyFormInputContainer>
                 <BuyFormInputTitle>Numero:</BuyFormInputTitle>
                 <BuyFormInput {...register("number", { required: true })} />
               </BuyFormInputContainer>
-              <BuyFormInputContainer>
-                <BuyFormInputTitle>Complemento:</BuyFormInputTitle>
-                <BuyFormInput {...register("complement", { required: true })} />
-              </BuyFormInputContainer>
+
               <CardBuyButton type="submit">
                 <TicketsTitle>Comprar</TicketsTitle>
               </CardBuyButton>
