@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TicketContainer,
   CloudImgLeft,
@@ -22,13 +22,32 @@ import {
   CardAmountButtons,
   CardAmountButtonsText,
   CardAmountButtonsTextMinus,
+  CardBuyButton,
+  CardBuyButtonContainer,
+  CardBuyButtonText,
+  CardImageLado,
 } from "./styled";
 
 import CloudLeftPath from "../../assets/cloudleft.svg";
 import CloudRightPath from "../../assets/cloudright.svg";
 import CardFrente from "../../assets/CardFrente.png";
+import CardLado from "../../assets/CardLado.png";
 import UserLogoPath from "../../assets/account.svg";
 const Ticket: React.FC = () => {
+  const [halfConter, SetHalfConter] = useState<number>(0);
+  const [Conter, SetConter] = useState<number>(0);
+  const HanddleCounter = (operation: number) => {
+    if (operation == -1 && Conter == 0) {
+      return;
+    }
+    SetConter(Conter + operation);
+  };
+  const HanddleHalfCounter = (operation: number) => {
+    if (operation == -1 && halfConter == 0) {
+      return;
+    }
+    SetHalfConter(halfConter + operation);
+  };
   return (
     <TicketContainer>
       <CloudImgLeft src={CloudLeftPath} />
@@ -44,6 +63,7 @@ const Ticket: React.FC = () => {
           <CardMainDivider />
           <CardImageContainer>
             <CardImage src={CardFrente} />
+            <CardImageLado src={CardLado} />
           </CardImageContainer>
           <CardPeopleContainer>
             <CardPeopleLogo src={UserLogoPath} />
@@ -55,13 +75,24 @@ const Ticket: React.FC = () => {
           </CardPriceContainer>
           <CardAmountButtonsContainer>
             <CardAmountButtons>
-              <CardAmountButtonsTextMinus>-</CardAmountButtonsTextMinus>
+              <CardAmountButtonsTextMinus
+                onClick={() => HanddleHalfCounter(-1)}
+              >
+                -
+              </CardAmountButtonsTextMinus>
             </CardAmountButtons>
-            <CardAmountButtonsText>0</CardAmountButtonsText>
+            <CardAmountButtonsText>{halfConter}</CardAmountButtonsText>
             <CardAmountButtons>
-              <CardAmountButtonsText>+</CardAmountButtonsText>
+              <CardAmountButtonsText onClick={() => HanddleHalfCounter(+1)}>
+                +
+              </CardAmountButtonsText>
             </CardAmountButtons>
           </CardAmountButtonsContainer>
+          <CardBuyButtonContainer>
+            <CardBuyButton>
+              <CardBuyButtonText>Comprar</CardBuyButtonText>
+            </CardBuyButton>
+          </CardBuyButtonContainer>
         </CardContainer>
         <CardContainer>
           <CardTitleContainer>
@@ -73,6 +104,7 @@ const Ticket: React.FC = () => {
           <CardMainDivider />
           <CardImageContainer>
             <CardImage src={CardFrente} />
+            <CardImageLado src={CardLado} />
           </CardImageContainer>
           <CardPeopleContainer>
             <CardPeopleLogo src={UserLogoPath} />
@@ -83,14 +115,21 @@ const Ticket: React.FC = () => {
             <CardPriceText>R$:120,00</CardPriceText>
           </CardPriceContainer>
           <CardAmountButtonsContainer>
-            <CardAmountButtons>
+            <CardAmountButtons onClick={() => HanddleCounter(-1)}>
               <CardAmountButtonsTextMinus>-</CardAmountButtonsTextMinus>
             </CardAmountButtons>
-            <CardAmountButtonsText>0</CardAmountButtonsText>
+            <CardAmountButtonsText>{Conter}</CardAmountButtonsText>
             <CardAmountButtons>
-              <CardAmountButtonsText>+</CardAmountButtonsText>
+              <CardAmountButtonsText onClick={() => HanddleCounter(+1)}>
+                +
+              </CardAmountButtonsText>
             </CardAmountButtons>
           </CardAmountButtonsContainer>
+          <CardBuyButtonContainer>
+            <CardBuyButton>
+              <CardBuyButtonText>Comprar</CardBuyButtonText>
+            </CardBuyButton>
+          </CardBuyButtonContainer>
         </CardContainer>
       </CardsWarper>
     </TicketContainer>

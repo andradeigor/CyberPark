@@ -32,13 +32,6 @@ export const CardsWarper = styled.section`
   gap: 60px;
   right: 50%;
 `;
-export const CardContainer = styled.div`
-  width: 320px;
-  height: 550px;
-  background-color: #303030;
-  border-radius: 20px;
-  box-shadow: rgba(9, 25, 51, 0.15) 1.95px 1.95px 2.6px;
-`;
 
 export const CardTitleContainer = styled.div`
   width: 100%;
@@ -89,8 +82,35 @@ export const CardImage = styled.img`
   border-radius: 50%;
   margin-top: 20px;
   border: 5px solid #606060;
+  transition: all 0.3s ease-out;
 `;
-
+export const CardImageLado = styled.img`
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-top: 20px;
+  border: 5px solid #606060;
+  transition: all 0.3s ease-out;
+  display: none;
+`;
+export const CardContainer = styled.div`
+  width: 320px;
+  height: 550px;
+  background-color: #303030;
+  border-radius: 20px;
+  box-shadow: rgba(9, 25, 51, 0.15) 1.95px 1.95px 2.6px;
+  transition: all 0.3s ease-out;
+  overflow: hidden;
+  :hover {
+    height: 630px;
+    ${CardImage} {
+      display: none;
+    }
+    ${CardImageLado} {
+      display: block;
+    }
+  }
+`;
 export const CardPeopleContainer = styled.div`
   width: 100%;
   margin-top: 20px;
@@ -163,4 +183,28 @@ export const CardAmountButtonsTextMinus = styled.p`
   font-size: 34px;
   color: #ffffff;
   margin-bottom: 5px;
+`;
+
+export const CardBuyButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
+export const CardBuyButton = styled.button`
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  background-color: #606060;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+export const CardBuyButtonText = styled.p`
+  font-weight: 600;
+  font-size: 24px;
+  color: #ffffff;
 `;
