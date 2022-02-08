@@ -33,9 +33,11 @@ import CloudRightPath from "../../assets/cloudright.svg";
 import CardFrente from "../../assets/CardFrente.png";
 import CardLado from "../../assets/CardLado.png";
 import UserLogoPath from "../../assets/account.svg";
+import { useNavigate } from "react-router-dom";
 const Ticket: React.FC = () => {
   const [halfConter, SetHalfConter] = useState<number>(0);
   const [Conter, SetConter] = useState<number>(0);
+  const navigate = useNavigate();
   const HanddleCounter = (operation: number) => {
     if (operation == -1 && Conter == 0) {
       return;
@@ -90,7 +92,11 @@ const Ticket: React.FC = () => {
           </CardAmountButtonsContainer>
           <CardBuyButtonContainer>
             <CardBuyButton>
-              <CardBuyButtonText>Comprar</CardBuyButtonText>
+              <CardBuyButtonText
+                onClick={() => navigate(`/buy/${halfConter}/${Conter}`)}
+              >
+                Comprar
+              </CardBuyButtonText>
             </CardBuyButton>
           </CardBuyButtonContainer>
         </CardContainer>
@@ -127,7 +133,11 @@ const Ticket: React.FC = () => {
           </CardAmountButtonsContainer>
           <CardBuyButtonContainer>
             <CardBuyButton>
-              <CardBuyButtonText>Comprar</CardBuyButtonText>
+              <CardBuyButtonText
+                onClick={() => navigate(`/buy/${halfConter}/${Conter}`)}
+              >
+                Comprar
+              </CardBuyButtonText>
             </CardBuyButton>
           </CardBuyButtonContainer>
         </CardContainer>

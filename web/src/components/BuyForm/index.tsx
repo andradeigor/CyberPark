@@ -11,12 +11,27 @@ import {
   BuyFormInput,
   TicketsContainer,
   FormGlobalContainer,
+  TicketsWarper,
+  TicketsTitle,
+  TicketsTitleContainer,
+  TicketsDivider,
+  TicketsBodyTextContainer,
+  TicketsBodyTextWarper,
+  YesAnotherDivider,
+  TicketsButtonsContainer,
+  TicketButtonsWarper,
+  CardAmoutButtonText,
 } from "./styled";
-import { CardBuyButton } from "../Tickets/styled";
+import {
+  CardBuyButton,
+  CardAmountButtons,
+  CardAmountButtonsText,
+} from "../Tickets/styled";
 import { useForm, SubmitHandler } from "react-hook-form";
 import LogoPath from "../../assets/logo.png";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 type Inputs = {
   name: string;
   cep: string;
@@ -37,7 +52,30 @@ const BuyForm = () => {
     formState: { errors },
   } = useForm<Inputs>();
   const [controlCep, setControlCep] = useState<boolean>(false);
+  const [halfConter, SetHalfConter] = useState<number>(0);
+  const [Conter, SetConter] = useState<number>(0);
+  const params = useParams();
+  useEffect(() => {
+    if (params?.half) {
+      SetHalfConter(parseInt(params.half));
+    }
+    if (params?.normal) {
+      SetConter(parseInt(params.normal));
+    }
+  }, []);
   const onSubmit: SubmitHandler<Inputs> = (data) => alert(JSON.stringify(data));
+  const HanddleCounter = (operation: number) => {
+    if (operation == -1 && Conter == 0) {
+      return;
+    }
+    SetConter(Conter + operation);
+  };
+  const HanddleHalfCounter = (operation: number) => {
+    if (operation == -1 && halfConter == 0) {
+      return;
+    }
+    SetHalfConter(halfConter + operation);
+  };
   function onBlurcep() {
     const value = getValues("cep");
     console.log(value);
@@ -118,10 +156,75 @@ const BuyForm = () => {
                 <BuyFormInputTitle>Complemento:</BuyFormInputTitle>
                 <BuyFormInput {...register("complement", { required: true })} />
               </BuyFormInputContainer>
-              <CardBuyButton type="submit">Comprar</CardBuyButton>
+              <CardBuyButton type="submit">
+                <TicketsTitle>Comprar</TicketsTitle>
+              </CardBuyButton>
             </BuyFormForm>
           </BuyFormFormContainer>
-          <TicketsContainer></TicketsContainer>
+          <TicketsContainer>
+            <TicketsWarper>
+              <TicketsTitleContainer>
+                <TicketsTitle>1 Ingresso</TicketsTitle>
+              </TicketsTitleContainer>
+              <TicketsDivider />
+              <TicketsBodyTextContainer>
+                <TicketsBodyTextWarper>
+                  <TicketsTitle>Meia Entrada</TicketsTitle>
+                </TicketsBodyTextWarper>
+                <YesAnotherDivider />
+                <TicketsBodyTextWarper>
+                  <TicketsTitle>R$:60,00</TicketsTitle>
+                </TicketsBodyTextWarper>
+              </TicketsBodyTextContainer>
+              <TicketsButtonsContainer>
+                <TicketButtonsWarper>
+                  <CardAmountButtons>
+                    <CardAmoutButtonText onClick={() => HanddleHalfCounter(-1)}>
+                      -
+                    </CardAmoutButtonText>
+                  </CardAmountButtons>
+                  <TicketsTitle>{halfConter}</TicketsTitle>
+                  <CardAmountButtons>
+                    <CardAmountButtonsText
+                      onClick={() => HanddleHalfCounter(1)}
+                    >
+                      +
+                    </CardAmountButtonsText>
+                  </CardAmountButtons>
+                </TicketButtonsWarper>
+              </TicketsButtonsContainer>
+            </TicketsWarper>
+            <TicketsWarper>
+              <TicketsTitleContainer>
+                <TicketsTitle>1 Ingresso</TicketsTitle>
+              </TicketsTitleContainer>
+              <TicketsDivider />
+              <TicketsBodyTextContainer>
+                <TicketsBodyTextWarper>
+                  <TicketsTitle>Entrada</TicketsTitle>
+                </TicketsBodyTextWarper>
+                <YesAnotherDivider />
+                <TicketsBodyTextWarper>
+                  <TicketsTitle>R$:120,00</TicketsTitle>
+                </TicketsBodyTextWarper>
+              </TicketsBodyTextContainer>
+              <TicketsButtonsContainer>
+                <TicketButtonsWarper>
+                  <CardAmountButtons>
+                    <CardAmoutButtonText onClick={() => HanddleCounter(-1)}>
+                      -
+                    </CardAmoutButtonText>
+                  </CardAmountButtons>
+                  <TicketsTitle>{Conter}</TicketsTitle>
+                  <CardAmountButtons>
+                    <CardAmountButtonsText onClick={() => HanddleCounter(1)}>
+                      +
+                    </CardAmountButtonsText>
+                  </CardAmountButtons>
+                </TicketButtonsWarper>
+              </TicketsButtonsContainer>
+            </TicketsWarper>
+          </TicketsContainer>
         </FormGlobalContainer>
       </BuyFormWarper>
     </BuyFormContainer>

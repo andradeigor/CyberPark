@@ -70,9 +70,77 @@ export const BuyFormInput = styled.input`
 export const TicketsContainer = styled.div`
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const TicketsWarper = styled.div`
   width: 320px;
   height: 180px;
+  background-color: #606060;
+  margin: 20px;
+  border-radius: 20px;
+`;
+export const TicketsTitleContainer = styled.div`
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+`;
+export const TicketsTitle = styled.h1`
+  font-size: 20px;
+  color: #fff;
+`;
+
+export const TicketsDivider = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: #303030;
+  margin-top: 10px;
+`;
+
+export const TicketsBodyTextContainer = styled.div`
+  width: 100%;
+  height: 80px;
+  display: flex;
+`;
+
+export const YesAnotherDivider = styled.div`
+  width: 1px;
+  height: 80%;
+  background-color: #303030;
+  margin-top: 4%;
+`;
+export const TicketsBodyTextWarper = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TicketsButtonsContainer = styled.div`
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TicketButtonsWarper = styled.div`
+  background-color: #505050;
+  width: 60%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const CardAmoutButtonText = styled.p`
+  font-weight: 800;
+  font-size: 34px;
+  color: #ffffff;
+  margin-bottom: 5px;
 `;
